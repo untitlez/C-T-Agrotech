@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── shadcn/ui theme tokens ───────────────────────────────────── */
+/* Primary: Tiffany Blue / Emerald-teal (#0ABFBC family)           */
+@theme inline {
+  --color-background:         var(--background);
+  --color-foreground:         var(--foreground);
+  --color-card:               var(--card);
+  --color-card-foreground:    var(--card-foreground);
+  --color-popover:            var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary:            var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  var(--accent-foreground);
+  --color-destructive:        var(--destructive);
+  --color-border:             var(--border);
+  --color-input:              var(--input);
+  --color-ring:               var(--ring);
+  --color-chart-1:            var(--chart-1);
+  --color-chart-2:            var(--chart-2);
+  --color-chart-3:            var(--chart-3);
+  --color-chart-4:            var(--chart-4);
+  --color-chart-5:            var(--chart-5);
+  --color-sidebar:            var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary:    var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:     var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:     var(--sidebar-border);
+  --color-sidebar-ring:       var(--sidebar-ring);
+
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 4px);
+
+  /* trading colours exposed as Tailwind utilities */
+  --color-bull:       oklch(62% 0.19 152);
+  --color-bear:       oklch(58% 0.22 25);
+  --color-bull-muted: oklch(62% 0.19 152 / 12%);
+  --color-bear-muted: oklch(58% 0.22 25 / 12%);
+}
+
+/* ─── Light theme ──────────────────────────────────────────────── */
+:root {
+  --radius: 0.65rem;
+
+  /* Tiffany Blue primary: oklch approx of #0ABFBC */
+  --background:         oklch(99% 0.003 192);
+  --foreground:         oklch(15% 0.012 200);
+  --card:               oklch(100% 0 0);
+  --card-foreground:    oklch(15% 0.012 200);
+  --popover:            oklch(100% 0 0);
+  --popover-foreground: oklch(15% 0.012 200);
+  --primary:            oklch(66% 0.14 194);   /* Tiffany Blue */
+  --primary-foreground: oklch(99% 0.003 192);
+  --secondary:          oklch(92% 0.025 194);
+  --secondary-foreground: oklch(30% 0.05 194);
+  --muted:              oklch(94% 0.01 200);
+  --muted-foreground:   oklch(52% 0.02 200);
+  --accent:             oklch(91% 0.06 192);
+  --accent-foreground:  oklch(25% 0.06 192);
+  --destructive:        oklch(57% 0.22 27);
+  --border:             oklch(90% 0.012 200);
+  --input:              oklch(90% 0.012 200);
+  --ring:               oklch(66% 0.14 194);
+  --chart-1:            oklch(66% 0.14 194);
+  --chart-2:            oklch(62% 0.19 152);
+  --chart-3:            oklch(70% 0.18 55);
+  --chart-4:            oklch(58% 0.22 25);
+  --chart-5:            oklch(56% 0.16 270);
+  --sidebar:            oklch(97% 0.006 194);
+  --sidebar-foreground: oklch(25% 0.015 200);
+  --sidebar-primary:    oklch(66% 0.14 194);
+  --sidebar-primary-foreground: oklch(99% 0 0);
+  --sidebar-accent:     oklch(92% 0.03 194);
+  --sidebar-accent-foreground: oklch(25% 0.05 194);
+  --sidebar-border:     oklch(90% 0.012 200);
+  --sidebar-ring:       oklch(66% 0.14 194);
+}
+
+/* ─── Dark theme ───────────────────────────────────────────────── */
+.dark {
+  --background:         oklch(11% 0.015 200);
+  --foreground:         oklch(93% 0.01 195);
+  --card:               oklch(14% 0.015 200);
+  --card-foreground:    oklch(93% 0.01 195);
+  --popover:            oklch(14% 0.015 200);
+  --popover-foreground: oklch(93% 0.01 195);
+  --primary:            oklch(68% 0.15 194);   /* brighter Tiffany in dark */
+  --primary-foreground: oklch(11% 0.012 200);
+  --secondary:          oklch(22% 0.025 200);
+  --secondary-foreground: oklch(88% 0.012 195);
+  --muted:              oklch(20% 0.018 200);
+  --muted-foreground:   oklch(58% 0.02 200);
+  --accent:             oklch(22% 0.04 194);
+  --accent-foreground:  oklch(85% 0.04 192);
+  --destructive:        oklch(60% 0.22 27);
+  --border:             oklch(22% 0.02 200);
+  --input:              oklch(22% 0.02 200);
+  --ring:               oklch(68% 0.15 194);
+  --chart-1:            oklch(68% 0.15 194);
+  --chart-2:            oklch(64% 0.2 152);
+  --chart-3:            oklch(72% 0.18 55);
+  --chart-4:            oklch(60% 0.22 25);
+  --chart-5:            oklch(58% 0.17 270);
+  --sidebar:            oklch(13% 0.013 200);
+  --sidebar-foreground: oklch(88% 0.01 195);
+  --sidebar-primary:    oklch(68% 0.15 194);
+  --sidebar-primary-foreground: oklch(11% 0.012 200);
+  --sidebar-accent:     oklch(20% 0.03 194);
+  --sidebar-accent-foreground: oklch(85% 0.04 192);
+  --sidebar-border:     oklch(22% 0.02 200);
+  --sidebar-ring:       oklch(68% 0.15 194);
+}
+
+/* ─── Base styles ──────────────────────────────────────────────── */
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Noto Sans Thai", "Prompt", sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,h2,h3,h4,h5,h6 { font-family: "Prompt", "Noto Sans Thai", sans-serif; }
+}
+
+/* ─── Custom utilities ─────────────────────────────────────────── */
+@layer utilities {
+  .font-display  { font-family: "Prompt", sans-serif; }
+  .font-mono     { font-family: "JetBrains Mono", monospace; }
+  .text-bull     { color: var(--color-bull); }
+  .text-bear     { color: var(--color-bear); }
+  .bg-bull-muted { background-color: var(--color-bull-muted); }
+  .bg-bear-muted { background-color: var(--color-bear-muted); }
+
+  .gradient-brand {
+    background: linear-gradient(135deg, oklch(60% 0.16 194), oklch(72% 0.12 194));
+  }
+  .gradient-brand-text {
+    background: linear-gradient(135deg, oklch(55% 0.16 194), oklch(68% 0.18 174));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Ticker animation */
+  .ticker-wrap { overflow: hidden; white-space: nowrap; }
+  .ticker-inner {
+    display: inline-flex;
+    gap: 2.5rem;
+    animation: ticker-scroll 35s linear infinite;
+  }
+  .ticker-inner:hover { animation-play-state: paused; }
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+
+  /* Fade-in page transition */
+  .page-fade { animation: page-fade-in 0.3s ease-out; }
+  @keyframes page-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
