@@ -45,23 +45,18 @@ export default function ContactPage() {
       l: tr.address,
       v:
         lang === "th"
-          ? "123 ถ.เกษตรนวมินทร์ เขตลาดพร้าว กรุงเทพฯ 10230"
-          : "123 Kaset-Nawamin Rd, Lat Phrao, Bangkok 10230",
+          ? "121 ม.1  ต.ท่าสาย อ.เมือง จ.เชียงราย 57000"
+          : "121 M.1 Tha Sai, Mueang, Chiang Rai 57000",
     },
     {
       icon: <Phone className="size-4" />,
       l: lang === "th" ? "โทรศัพท์" : "Phone",
-      v: "02-xxx-xxxx | 081-xxx-xxxx",
+      v: "086-30425812",
     },
     {
       icon: <Mail className="size-4" />,
       l: "Email",
-      v: "info@ct-agrotech.com",
-    },
-    {
-      icon: <MessageSquare className="size-4" />,
-      l: tr.lineId,
-      v: "@ct-agrotech",
+      v: "ceeandtee005@gmail.com",
     },
     {
       icon: <Clock className="size-4" />,

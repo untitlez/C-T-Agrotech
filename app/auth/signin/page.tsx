@@ -83,7 +83,7 @@ export default function SignInPage() {
               <div>
                 <p className="text-[10px] text-muted-foreground text-center mb-2 uppercase tracking-wide">{lang==="th"?"บัญชีทดสอบ":"Demo Accounts"}</p>
                 <div className="flex flex-col gap-1.5">
-                  {[{e:"somchai@gmail.com",r:"Admin"},{e:"akkarawit@gmail.com",r:"Trader"}].map(d=>(
+                  {[{e:"akkarawit@gmail.com",r:"Admin"},{e:"somchai@gmail.com",r:"Trader"}].map(d=>(
                     <button key={d.e} onClick={()=>setEmail(d.e)}
                       className="flex justify-between items-center px-3 py-2 rounded-lg border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all text-xs">
                       <span className="font-mono text-muted-foreground">{d.e}</span>

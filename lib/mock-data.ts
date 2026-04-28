@@ -63,8 +63,8 @@ export function generateFutures(market: MarketItem[]): FuturesContract[] {
 }
 
 export const MOCK_USERS: User[] = [
-  { id:"u1", name:"สมชาย ใจดี", email:"somchai@gmail.com", role:"admin", balance:5000000, verified:true, joinedAt:"2024-01-15" },
-  { id:"u2", name:"อัครวิชช์ ถาวรพิบูลย์", email:"akkarawit@gmail.com", role:"trader", balance:2450000, verified:true, joinedAt:"2024-03-10" },
+  { id:"u1", name:"อัครวิชช์ ถาวรพิบูลย์", email:"akkarawit@gmail.com", role:"admin", balance:5000000, verified:true, joinedAt:"2024-01-15" },
+  { id:"u2", name:"สมชาย ใจดี", email:"somchai@gmail.com", role:"trader", balance:2450000, verified:true, joinedAt:"2024-03-10" },
   { id:"u3", name:"ธนา วัตถุดิบ", email:"thana@gmail.com", role:"trader", balance:1200000, verified:false, joinedAt:"2024-06-22" },
   { id:"u4", name:"รัตนา พืชผล", email:"rattana@gmail.com", role:"viewer", balance:800000, verified:true, joinedAt:"2024-08-05" },
 ];
