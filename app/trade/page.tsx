@@ -64,7 +64,7 @@ export default function TradePage() {
         {/* Left: Market List */}
         <aside className="hidden sm:flex flex-col w-[208px] flex-shrink-0 border-r overflow-hidden">
           <div className="px-2 pt-2 pb-1">
-            <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest px-1">
+            <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest px-1">
               {tr.commodity}
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function TradePage() {
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="hidden sm:flex gap-3 text-[10px]">
+                  <div className="hidden sm:flex gap-3 text-[12px]">
                     {[
                       {
                         l: tr.high24h,
@@ -142,7 +142,7 @@ export default function TradePage() {
                         key={t}
                         onClick={() => setTf(t)}
                         className={cn(
-                          "px-2 py-0.5 rounded text-[10px] font-bold transition-all",
+                          "px-2 py-0.5 rounded text-[12px] font-bold transition-all",
                           tf === t
                             ? "bg-primary/15 text-primary"
                             : "text-muted-foreground hover:text-foreground",
@@ -165,7 +165,7 @@ export default function TradePage() {
           <div className="grid grid-cols-2 flex-1 min-h-0 overflow-hidden divide-x">
             <div className="overflow-hidden flex flex-col">
               <div className="px-3 py-2 border-b bg-muted/30">
-                <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                   {tr.orderBook}
                 </span>
               </div>
@@ -175,7 +175,7 @@ export default function TradePage() {
             </div>
             <div className="overflow-hidden flex flex-col">
               <div className="px-3 py-2 border-b bg-muted/30">
-                <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                   {tr.recentTrades}
                 </span>
               </div>
@@ -191,7 +191,7 @@ export default function TradePage() {
           {/* Place Order */}
           <div className="flex-shrink-0">
             <div className="px-3 py-2 border-b bg-muted/30">
-              <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+              <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                 {tr.placeOrder}
               </span>
             </div>
@@ -204,7 +204,7 @@ export default function TradePage() {
             {/* Asset Info */}
             <div>
               <div className="px-3 py-2 bg-muted/30 border-b">
-                <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                   {tr.productInfo}
                 </span>
               </div>
@@ -237,7 +237,7 @@ export default function TradePage() {
             {/* Suppliers */}
             <div className="border-t">
               <div className="px-3 py-2 bg-muted/30 border-b">
-                <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                   {tr.suppliers}
                 </span>
               </div>
@@ -253,12 +253,12 @@ export default function TradePage() {
                           {lang === "th" ? s.name : s.nameEn}
                         </span>
                         {s.verified && (
-                          <span className="text-[9px] text-primary font-semibold">
+                          <span className="text-[11px] text-primary font-semibold">
                             {tr.verified}
                           </span>
                         )}
                       </div>
-                      <div className="flex justify-between text-[10px] text-muted-foreground">
+                      <div className="flex justify-between text-[12px] text-muted-foreground">
                         <span>
                           ⭐ {s.rating} · {s.trades} {tr.trades}
                         </span>
@@ -273,7 +273,7 @@ export default function TradePage() {
             {/* Open Orders */}
             <div className="border-t">
               <div className="px-3 py-2 bg-muted/30 border-b">
-                <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                   {tr.openOrders}
                 </span>
               </div>
@@ -287,12 +287,12 @@ export default function TradePage() {
                         </span>
                         <Badge
                           variant={o.side === "buy" ? "bull" : "bear"}
-                          className="text-[8px] h-3.5 px-1"
+                          className="text-[11px] h-3.5 px-1"
                         >
                           {o.side.toUpperCase()}
                         </Badge>
                       </div>
-                      <div className="flex justify-between text-[10px] text-muted-foreground">
+                      <div className="flex justify-between text-[12px] text-muted-foreground">
                         <span>
                           {o.type.toUpperCase()} @ ฿{o.price.toLocaleString()}
                         </span>

@@ -40,7 +40,7 @@ export default function MarketPage() {
               <CardContent className="pt-0">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">{s.l}</p>
+                    <p className="text-[12px] text-muted-foreground uppercase tracking-wide mb-1">{s.l}</p>
                     <p className={cn("text-2xl font-bold font-mono", s.c)}>{s.v}</p>
                   </div>
                   <div className={cn("p-2 rounded-lg bg-muted mt-1", s.c)}>{s.icon}</div>
@@ -70,7 +70,7 @@ export default function MarketPage() {
                   <thead>
                     <tr className="border-b">
                       {[tr.commodity, tr.symbol, tr.lastPrice, tr.change, tr.volume24h, tr.grade, tr.origin, ""].map(h=>(
-                        <th key={h} className="text-left px-4 py-2.5 text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
+                        <th key={h} className="text-left px-4 py-2.5 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -82,13 +82,13 @@ export default function MarketPage() {
                           className="border-b border-border/40 hover:bg-muted/40 cursor-pointer transition-colors group">
                           <td className="px-4 py-3">
                             <div className="text-sm font-semibold group-hover:text-primary transition-colors">{lang==="th"?item.name:item.nameEn}</div>
-                            <div className="text-[10px] text-muted-foreground">{lang==="th"?item.category:item.categoryEn}</div>
+                            <div className="text-[12px] text-muted-foreground">{lang==="th"?item.category:item.categoryEn}</div>
                           </td>
                           <td className="px-4 py-3"><span className="font-mono font-bold text-xs text-primary">{item.symbol}</span></td>
                           <td className="px-4 py-3 font-mono font-bold text-sm">฿{item.price.toLocaleString("th-TH",{maximumFractionDigits:0})}</td>
                           <td className="px-4 py-3"><span className={cn("text-xs font-mono font-semibold",isUp?"text-bull":"text-bear")}>{fmtPct(item.change)}</span></td>
                           <td className="px-4 py-3 text-xs text-muted-foreground font-mono">{item.volume.toLocaleString("th-TH",{maximumFractionDigits:0})} {lang==="th"?item.unit:item.unitEn}</td>
-                          <td className="px-4 py-3"><Badge variant={item.grade==="A+"?"gold":"muted"} className="text-[9px]">{item.grade}</Badge></td>
+                          <td className="px-4 py-3"><Badge variant={item.grade==="A+"?"gold":"muted"} className="text-[11px]">{item.grade}</Badge></td>
                           <td className="px-4 py-3 text-xs text-muted-foreground">{lang==="th"?item.origin:item.originEn}</td>
                           <td className="px-4 py-3"><Sparkline data={item.candles.slice(-20)} color={isUp?"#10b981":"#ef4444"} width={80} height={26}/></td>
                         </tr>
@@ -112,12 +112,12 @@ export default function MarketPage() {
                     <Badge variant={n.impact==="bullish"?"bull":n.impact==="bearish"?"bear":"muted"} className="text-[8px] h-3.5 px-1.5">
                       {lang==="th"?n.tag:n.tagEn}
                     </Badge>
-                    <span className={cn("text-[10px] font-semibold",n.impact==="bullish"?"text-bull":n.impact==="bearish"?"text-bear":"text-muted-foreground")}>
+                    <span className={cn("text-[12px] font-semibold",n.impact==="bullish"?"text-bull":n.impact==="bearish"?"text-bear":"text-muted-foreground")}>
                       {n.impact==="bullish"?"▲ "+tr.bullish:n.impact==="bearish"?"▼ "+tr.bearish:"— "+tr.neutral}
                     </span>
                   </div>
                   <p className="text-xs font-medium leading-relaxed mb-1">{lang==="th"?n.title:n.titleEn}</p>
-                  <p className="text-[10px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</p>
+                  <p className="text-[12px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</p>
                 </div>
               ))}
             </CardContent>

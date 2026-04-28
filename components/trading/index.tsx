@@ -37,7 +37,7 @@ export function OrderBook({ mid, tr }: { mid: number; tr: any }) {
         <span
           key={h}
           className={cn(
-            "text-[9px] font-semibold text-muted-foreground uppercase tracking-wider",
+            "text-[11px] font-semibold text-muted-foreground uppercase tracking-wider",
             i === 1 ? "text-center" : i === 2 ? "text-right" : "",
           )}
         >
@@ -53,10 +53,10 @@ export function OrderBook({ mid, tr }: { mid: number; tr: any }) {
       {[...book.asks].reverse().map((a, i) => (
         <div
           key={i}
-          className="relative grid grid-cols-3 px-3 py-[2.5px] hover:bg-bear/5"
+          className="relative grid grid-cols-3 px-3 py-[2.5px] hover:bg-bear/10"
         >
           <div
-            className="absolute right-0 inset-y-0 bg-bear/6 transition-all"
+            className="absolute right-0 inset-y-0 bg-bear/10 transition-all"
             style={{ width: `${(a.total / maxT) * 100}%` }}
           />
           <span className="relative text-bear">{a.price.toLocaleString()}</span>
@@ -72,17 +72,17 @@ export function OrderBook({ mid, tr }: { mid: number; tr: any }) {
         <span className="text-sm font-bold font-mono text-bull">
           {mid.toLocaleString("th-TH", { maximumFractionDigits: 0 })}
         </span>
-        <span className="text-[9px] text-muted-foreground ml-2">
+        <span className="text-[11px] text-muted-foreground ml-2">
           {tr.midPrice}
         </span>
       </div>
       {book.bids.map((b, i) => (
         <div
           key={i}
-          className="relative grid grid-cols-3 px-3 py-[2.5px] hover:bg-bull/5"
+          className="relative grid grid-cols-3 px-3 py-[2.5px] hover:bg-bull/10"
         >
           <div
-            className="absolute right-0 inset-y-0 bg-bull/6 transition-all"
+            className="absolute right-0 inset-y-0 bg-bull/10 transition-all"
             style={{ width: `${(b.total / maxT) * 100}%` }}
           />
           <span className="relative text-bull">{b.price.toLocaleString()}</span>
@@ -126,7 +126,7 @@ export function TradeFeed({ mid, tr }: { mid: number; tr: any }) {
           <span
             key={i}
             className={cn(
-              "text-[9px] font-semibold text-muted-foreground uppercase tracking-wider",
+              "text-[11px] font-semibold text-muted-foreground uppercase tracking-wider",
               i === 2 ? "text-center" : i === 3 ? "text-right" : "",
             )}
           >
@@ -142,7 +142,7 @@ export function TradeFeed({ mid, tr }: { mid: number; tr: any }) {
             i === 0 && "bg-muted/40",
           )}
         >
-          <span className="text-muted-foreground text-[9px] pt-px">
+          <span className="text-muted-foreground text-[11px] pt-px">
             {trade.time}
           </span>
           <span
@@ -156,7 +156,7 @@ export function TradeFeed({ mid, tr }: { mid: number; tr: any }) {
           <span className="text-center text-muted-foreground">{trade.qty}</span>
           <span
             className={cn(
-              "text-right font-bold text-[10px]",
+              "text-right font-bold text-[12px]",
               trade.side === "buy" ? "text-bull" : "text-bear",
             )}
           >
@@ -228,7 +228,7 @@ export function PlaceOrder({
             key={t}
             onClick={() => setType(t)}
             className={cn(
-              "flex-1 py-1.5 text-[10px] font-bold rounded-md border transition-all",
+              "flex-1 py-1.5 text-[12px] font-bold rounded-md border transition-all",
               type === t
                 ? side === "buy"
                   ? "border-bull/50 bg-bull/10 text-bull"
@@ -244,7 +244,7 @@ export function PlaceOrder({
       {/* Price (limit/stop) */}
       {type !== "market" && (
         <div className="flex flex-col gap-1.5">
-          <Label className="text-[10px] text-muted-foreground uppercase tracking-wider">
+          <Label className="text-[12px] text-muted-foreground uppercase tracking-wider">
             {tr.price} / {unit}
           </Label>
           <Input
@@ -258,7 +258,7 @@ export function PlaceOrder({
 
       {/* Qty */}
       <div className="flex flex-col gap-1.5">
-        <Label className="text-[10px] text-muted-foreground uppercase tracking-wider">
+        <Label className="text-[12px] text-muted-foreground uppercase tracking-wider">
           {tr.quantity} ({unit})
         </Label>
         <Input
@@ -276,7 +276,7 @@ export function PlaceOrder({
           <button
             key={q}
             onClick={() => setQty(String(q))}
-            className="py-1 text-[10px] font-semibold rounded-md border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground transition-all"
+            className="py-1 text-[12px] font-semibold rounded-md border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground transition-all"
           >
             {q}
           </button>
@@ -285,7 +285,7 @@ export function PlaceOrder({
 
       {/* Summary */}
       <div className="bg-muted/60 rounded-lg p-2.5 flex justify-between items-center">
-        <span className="text-[10px] text-muted-foreground font-medium">
+        <span className="text-[12px] text-muted-foreground font-medium">
           {tr.amount}
         </span>
         <span
@@ -319,7 +319,7 @@ export function PlaceOrder({
 
       <Separator />
       <div className="flex justify-between">
-        <span className="text-[10px] text-muted-foreground">{tr.wallet}</span>
+        <span className="text-[12px] text-muted-foreground">{tr.wallet}</span>
         <span className="text-[11px] font-mono font-semibold text-primary">
           ฿2,450,000
         </span>

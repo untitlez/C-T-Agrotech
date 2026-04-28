@@ -92,7 +92,7 @@ export default function PaymentPage() {
           <div className="flex flex-col gap-3">
             <Card className="gradient-brand border-0 text-white gap-2 py-4">
               <CardContent className="px-5">
-                <p className="text-[10px] text-white/70 uppercase tracking-widest mb-1">
+                <p className="text-[12px] text-white/70 uppercase tracking-widest mb-1">
                   {tr.wallet}
                 </p>
                 <p className="text-3xl font-bold font-mono mb-1">฿2,450,000</p>
@@ -120,7 +120,7 @@ export default function PaymentPage() {
             ].map((s) => (
               <Card key={s.l}>
                 <CardContent className="py-3">
-                  <p className="text-[9px] text-muted-foreground uppercase tracking-wide mb-0.5">
+                  <p className="text-[11px] text-muted-foreground uppercase tracking-wide mb-0.5">
                     {s.l}
                   </p>
                   <p className={cn("text-lg font-bold font-mono", s.c)}>
@@ -153,7 +153,7 @@ export default function PaymentPage() {
               <TabsContent value="deposit" className="mt-0">
                 <CardContent className="pt-4 flex flex-col gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <Label className="text-[10px] uppercase tracking-wider">
+                    <Label className="text-[12px] uppercase tracking-wider">
                       {tr.paymentMethod}
                     </Label>
                     <div className="flex flex-col gap-1.5">
@@ -272,7 +272,7 @@ export default function PaymentPage() {
                   )}
 
                   <div className="flex flex-col gap-1.5">
-                    <Label className="text-[10px] uppercase tracking-wider">
+                    <Label className="text-[12px] uppercase tracking-wider">
                       {lang === "th" ? "จำนวนเงิน (บาท)" : "Amount (THB)"}
                     </Label>
                     <Input
@@ -322,7 +322,7 @@ export default function PaymentPage() {
               <TabsContent value="withdraw" className="mt-0">
                 <CardContent className="pt-4">
                   <div className="flex flex-col gap-1.5 mb-4">
-                    <Label className="text-[10px] uppercase tracking-wider">
+                    <Label className="text-[12px] uppercase tracking-wider">
                       {lang === "th" ? "จำนวนเงิน (บาท)" : "Amount (THB)"}
                     </Label>
                     <Input
@@ -355,7 +355,7 @@ export default function PaymentPage() {
                     <p className="text-xs font-medium truncate">
                       {tx.description}
                     </p>
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-[12px] text-muted-foreground">
                       {tx.createdAt}
                     </p>
                   </div>
@@ -377,7 +377,7 @@ export default function PaymentPage() {
                             ? "gold"
                             : "bear"
                       }
-                      className="text-[8px] h-3.5 mt-0.5"
+                      className="text-[11px] h-3.5 mt-0.5"
                     >
                       {lang === "th"
                         ? tx.status === "completed"

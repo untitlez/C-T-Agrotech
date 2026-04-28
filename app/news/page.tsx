@@ -35,16 +35,16 @@ export default function NewsPage() {
               <div className={cn("h-1",n.impact==="bullish"?"bg-bull":n.impact==="bearish"?"bg-bear":"bg-muted-foreground")}/>
               <CardContent className="px-4 pt-4 pb-4">
                 <div className="flex items-center gap-2 mb-2.5">
-                  <Badge variant={n.impact==="bullish"?"bull":n.impact==="bearish"?"bear":"muted"} className="text-[9px]">{lang==="th"?n.tag:n.tagEn}</Badge>
+                  <Badge variant={n.impact==="bullish"?"bull":n.impact==="bearish"?"bear":"muted"} className="text-[11px]">{lang==="th"?n.tag:n.tagEn}</Badge>
                   <div className="flex items-center gap-1">
                     <ImpactIcon i={n.impact}/>
-                    <span className={cn("text-[10px] font-semibold",n.impact==="bullish"?"text-bull":n.impact==="bearish"?"text-bear":"text-muted-foreground")}>
+                    <span className={cn("text-[12px] font-semibold",n.impact==="bullish"?"text-bull":n.impact==="bearish"?"text-bear":"text-muted-foreground")}>
                       {n.impact==="bullish"?tr.bullish:n.impact==="bearish"?tr.bearish:tr.neutral}
                     </span>
                   </div>
                 </div>
                 <p className="text-sm font-semibold leading-relaxed mb-2">{lang==="th"?n.title:n.titleEn}</p>
-                <p className="text-[10px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</p>
+                <p className="text-[12px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</p>
               </CardContent>
             </Card>
           ))}
@@ -56,7 +56,7 @@ export default function NewsPage() {
             <div className="flex gap-1.5">
               {[["all",lang==="th"?"ทั้งหมด":"All"],["bull","▲ "+tr.bullish],["bear","▼ "+tr.bearish]].map(([f,l])=>(
                 <button key={f} onClick={()=>setFilter(f)}
-                  className={cn("px-3 py-1 text-[10px] font-semibold rounded-full border transition-all",
+                  className={cn("px-3 py-1 text-[12px] font-semibold rounded-full border transition-all",
                     filter===f?"bg-primary text-primary-foreground border-primary":"border-border text-muted-foreground hover:border-primary/50"
                   )}>
                   {l}
@@ -70,8 +70,8 @@ export default function NewsPage() {
                 <div className={cn("w-1 self-stretch rounded-full flex-shrink-0",n.impact==="bullish"?"bg-bull":n.impact==="bearish"?"bg-bear":"bg-muted-foreground/40")}/>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <Badge variant={n.impact==="bullish"?"bull":n.impact==="bearish"?"bear":"muted"} className="text-[8px] h-3.5 px-1.5">{lang==="th"?n.tag:n.tagEn}</Badge>
-                    <span className="text-[10px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</span>
+                    <Badge variant={n.impact==="bullish"?"bull":n.impact==="bearish"?"bear":"muted"} className="text-[11px] h-3.5 px-1.5">{lang==="th"?n.tag:n.tagEn}</Badge>
+                    <span className="text-[12px] text-muted-foreground">{lang==="th"?n.time:n.timeEn}</span>
                   </div>
                   <p className="text-sm leading-relaxed">{lang==="th"?n.title:n.titleEn}</p>
                 </div>

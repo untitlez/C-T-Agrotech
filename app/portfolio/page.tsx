@@ -48,9 +48,9 @@ export default function PortfolioPage() {
               <CardContent className="pt-0">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">{s.l}</p>
+                    <p className="text-[12px] text-muted-foreground uppercase tracking-wide mb-1">{s.l}</p>
                     <p className={cn("text-xl font-bold font-mono", s.c)}>{s.v}</p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5">{s.sub}</p>
+                    <p className="text-[12px] text-muted-foreground mt-0.5">{s.sub}</p>
                   </div>
                   <div className={cn("p-2 rounded-lg bg-muted mt-1", s.c)}>{s.icon}</div>
                 </div>
@@ -67,7 +67,7 @@ export default function PortfolioPage() {
               <CardContent className="p-0">
                 <table className="w-full">
                   <thead><tr className="border-b">{[tr.commodity,tr.quantity,tr.avgPrice,tr.currentPrice,tr.value,"P&L"].map(h=>(
-                    <th key={h} className="text-left px-4 py-2.5 text-[9px] font-bold text-muted-foreground uppercase tracking-wider last:text-right">{h}</th>
+                    <th key={h} className="text-left px-4 py-2.5 text-[11px] font-bold text-muted-foreground uppercase tracking-wider last:text-right">{h}</th>
                   ))}</tr></thead>
                   <tbody>
                     {positions.map(pos=>{
@@ -77,15 +77,15 @@ export default function PortfolioPage() {
                         <tr key={pos.symbol} className="border-b border-border/40 hover:bg-muted/30">
                           <td className="px-4 py-3.5">
                             <div className="font-semibold text-sm">{lang==="th"?pos.name:pos.nameEn}</div>
-                            <div className="text-[10px] text-primary font-mono">{pos.symbol}</div>
+                            <div className="text-[12px] text-primary font-mono">{pos.symbol}</div>
                           </td>
-                          <td className="px-4 py-3.5 font-mono text-sm">{pos.qty} <span className="text-[10px] text-muted-foreground">{lang==="th"?pos.unit:pos.unitEn}</span></td>
+                          <td className="px-4 py-3.5 font-mono text-sm">{pos.qty} <span className="text-[12px] text-muted-foreground">{lang==="th"?pos.unit:pos.unitEn}</span></td>
                           <td className="px-4 py-3.5 font-mono text-sm">฿{pos.avgPrice.toLocaleString("th-TH",{maximumFractionDigits:0})}</td>
                           <td className="px-4 py-3.5 font-mono text-sm font-semibold">฿{pos.curPrice.toLocaleString("th-TH",{maximumFractionDigits:0})}</td>
                           <td className="px-4 py-3.5 font-mono text-sm">฿{val.toLocaleString("th-TH",{maximumFractionDigits:0})}</td>
                           <td className="px-4 py-3.5 text-right">
                             <div className={cn("font-mono text-sm font-bold",up?"text-bull":"text-bear")}>{up?"+":""}฿{Math.abs(pnl).toLocaleString("th-TH",{maximumFractionDigits:0})}</div>
-                            <div className={cn("text-[10px] font-mono",up?"text-bull":"text-bear")}>{up?"+":""}{pct.toFixed(2)}%</div>
+                            <div className={cn("text-[12px] font-mono",up?"text-bull":"text-bear")}>{up?"+":""}{pct.toFixed(2)}%</div>
                           </td>
                         </tr>
                       )
@@ -103,19 +103,19 @@ export default function PortfolioPage() {
               <CardContent className="p-0">
                 <table className="w-full">
                   <thead><tr className="border-b">{["ID",tr.symbol,tr.type,tr.side,tr.price,tr.quantity,tr.status,lang==="th"?"วันที่":"Date"].map(h=>(
-                    <th key={h} className="text-left px-4 py-2.5 text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
+                    <th key={h} className="text-left px-4 py-2.5 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
                   ))}</tr></thead>
                   <tbody>
                     {MOCK_ORDERS.map(o=>(
                       <tr key={o.id} className="border-b border-border/40 hover:bg-muted/30">
-                        <td className="px-4 py-2.5 font-mono text-[9px] text-muted-foreground">{o.id}</td>
+                        <td className="px-4 py-2.5 font-mono text-[11px] text-muted-foreground">{o.id}</td>
                         <td className="px-4 py-2.5 font-mono font-bold text-xs text-primary">{o.symbol}</td>
                         <td className="px-4 py-2.5 text-xs uppercase text-muted-foreground">{o.type}</td>
-                        <td className="px-4 py-2.5"><Badge variant={o.side==="buy"?"bull":"bear"} className="text-[9px]">{o.side.toUpperCase()}</Badge></td>
+                        <td className="px-4 py-2.5"><Badge variant={o.side==="buy"?"bull":"bear"} className="text-[11px]">{o.side.toUpperCase()}</Badge></td>
                         <td className="px-4 py-2.5 font-mono text-xs">฿{o.price.toLocaleString()}</td>
                         <td className="px-4 py-2.5 font-mono text-xs">{o.qty}</td>
-                        <td className="px-4 py-2.5"><Badge variant={o.status==="filled"?"bull":o.status==="open"?"muted":"bear"} className="text-[9px]">{o.status}</Badge></td>
-                        <td className="px-4 py-2.5 text-[10px] text-muted-foreground">{o.createdAt}</td>
+                        <td className="px-4 py-2.5"><Badge variant={o.status==="filled"?"bull":o.status==="open"?"muted":"bear"} className="text-[11px]">{o.status}</Badge></td>
+                        <td className="px-4 py-2.5 text-[12px] text-muted-foreground">{o.createdAt}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -141,8 +141,8 @@ export default function PortfolioPage() {
                         <div className={cn("h-full rounded-full",up?"bg-bull":"bg-bear")} style={{width:`${pct}%`}}/>
                       </div>
                       <div className="flex justify-between mt-0.5">
-                        <span className="text-[10px] text-muted-foreground">฿{val.toLocaleString("th-TH",{maximumFractionDigits:0})}</span>
-                        <span className={cn("text-[10px] font-mono",up?"text-bull":"text-bear")}>{up?"+":""}{(((pos.curPrice-pos.avgPrice)/pos.avgPrice)*100).toFixed(2)}%</span>
+                        <span className="text-[12px] text-muted-foreground">฿{val.toLocaleString("th-TH",{maximumFractionDigits:0})}</span>
+                        <span className={cn("text-[12px] font-mono",up?"text-bull":"text-bear")}>{up?"+":""}{(((pos.curPrice-pos.avgPrice)/pos.avgPrice)*100).toFixed(2)}%</span>
                       </div>
                     </div>
                   )

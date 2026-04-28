@@ -75,7 +75,7 @@ export default function DashboardPage() {
                 <div className={cn("size-8 rounded-lg flex items-center justify-center mb-2", s.bg, s.c)}>
                   {s.icon}
                 </div>
-                <p className="text-[9px] text-muted-foreground uppercase tracking-wide mb-0.5">{s.l}</p>
+                <p className="text-[11px] text-muted-foreground uppercase tracking-wide mb-0.5">{s.l}</p>
                 <p className={cn("text-xl font-bold font-mono", s.c)}>{s.v}</p>
               </CardContent>
             </Card>
@@ -102,7 +102,7 @@ export default function DashboardPage() {
                   <thead>
                     <tr className="border-b">
                       {[tr.fullName, tr.email, tr.role, tr.balance, lang==="th"?"ยืนยัน":"Status", tr.joinDate, ""].map(h=>(
-                        <th key={h} className="text-left px-4 py-2.5 text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
+                        <th key={h} className="text-left px-4 py-2.5 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -119,20 +119,20 @@ export default function DashboardPage() {
                         </td>
                         <td className="px-4 py-3 text-xs text-muted-foreground">{u.email}</td>
                         <td className="px-4 py-3">
-                          <Badge variant={roleBadge[u.role]} className="text-[9px]">{u.role}</Badge>
+                          <Badge variant={roleBadge[u.role]} className="text-[11px]">{u.role}</Badge>
                         </td>
                         <td className="px-4 py-3 font-mono text-xs">
                           ฿{u.balance.toLocaleString("th-TH")}
                         </td>
                         <td className="px-4 py-3">
                           {u.verified
-                            ? <span className="flex items-center gap-1 text-bull text-[10px] font-semibold"><ShieldCheck className="size-3.5"/>{tr.verified}</span>
-                            : <span className="flex items-center gap-1 text-bear text-[10px] font-semibold"><ShieldX className="size-3.5"/>{lang==="th"?"ยังไม่ยืนยัน":"Unverified"}</span>
+                            ? <span className="flex items-center gap-1 text-bull text-[12px] font-semibold"><ShieldCheck className="size-3.5"/>{tr.verified}</span>
+                            : <span className="flex items-center gap-1 text-bear text-[12px] font-semibold"><ShieldX className="size-3.5"/>{lang==="th"?"ยังไม่ยืนยัน":"Unverified"}</span>
                           }
                         </td>
                         <td className="px-4 py-3 text-xs text-muted-foreground">{u.joinedAt}</td>
                         <td className="px-4 py-3">
-                          <Button size="sm" variant="ghost" className="h-6 text-[10px] px-2">
+                          <Button size="sm" variant="ghost" className="h-6 text-[12px] px-2">
                             {lang==="th"?"จัดการ":"Manage"}
                           </Button>
                         </td>
@@ -153,29 +153,29 @@ export default function DashboardPage() {
                   <thead>
                     <tr className="border-b">
                       {["ID", lang==="th"?"รายละเอียด":"Description", lang==="th"?"จำนวน":"Amount", lang==="th"?"วิธี":"Method", tr.status, lang==="th"?"วันที่":"Date"].map(h=>(
-                        <th key={h} className="text-left px-4 py-2.5 text-[9px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
+                        <th key={h} className="text-left px-4 py-2.5 text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {MOCK_TRANSACTIONS.map(tx=>(
                       <tr key={tx.id} className="border-b border-border/40 hover:bg-muted/30">
-                        <td className="px-4 py-2.5 font-mono text-[9px] text-muted-foreground">{tx.id}</td>
+                        <td className="px-4 py-2.5 font-mono text-[11px] text-muted-foreground">{tx.id}</td>
                         <td className="px-4 py-2.5 text-xs">{tx.description}</td>
                         <td className={cn("px-4 py-2.5 font-mono text-xs font-semibold", tx.amount>0?"text-bull":"text-bear")}>
                           {tx.amount>0?"+":""}฿{Math.abs(tx.amount).toLocaleString()}
                         </td>
-                        <td className="px-4 py-2.5 text-[10px] text-muted-foreground capitalize">
+                        <td className="px-4 py-2.5 text-[12px] text-muted-foreground capitalize">
                           {tx.method.replace("_"," ")}
                         </td>
                         <td className="px-4 py-2.5">
-                          <Badge variant={tx.status==="completed"?"bull":tx.status==="pending"?"gold":"bear"} className="text-[9px]">
+                          <Badge variant={tx.status==="completed"?"bull":tx.status==="pending"?"gold":"bear"} className="text-[11px]">
                             {lang==="th"
                               ? tx.status==="completed"?"สำเร็จ":tx.status==="pending"?"รอดำเนินการ":"ล้มเหลว"
                               : tx.status}
                           </Badge>
                         </td>
-                        <td className="px-4 py-2.5 text-[10px] text-muted-foreground">{tx.createdAt}</td>
+                        <td className="px-4 py-2.5 text-[12px] text-muted-foreground">{tx.createdAt}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -198,13 +198,13 @@ export default function DashboardPage() {
                     <div key={item.id} className="flex items-center justify-between px-4 py-2.5 border-b border-border/30 last:border-0 hover:bg-muted/30 transition-colors">
                       <div>
                         <span className="font-mono font-bold text-xs text-primary">{item.symbol}</span>
-                        <span className="text-[9px] text-muted-foreground ml-1.5">{lang==="th"?item.category:item.categoryEn}</span>
+                        <span className="text-[11px] text-muted-foreground ml-1.5">{lang==="th"?item.category:item.categoryEn}</span>
                       </div>
                       <div className="text-right">
                         <div className="font-mono text-xs font-semibold">
                           ฿{item.price.toLocaleString("th-TH",{maximumFractionDigits:0})}
                         </div>
-                        <div className={cn("text-[10px] font-mono", isUp?"text-bull":"text-bear")}>
+                        <div className={cn("text-[12px] font-mono", isUp?"text-bull":"text-bear")}>
                           {isUp?"▲":"▼"} {Math.abs(item.change).toFixed(2)}%
                         </div>
                       </div>
@@ -234,11 +234,11 @@ export default function DashboardPage() {
                         </div>
                         <div>
                           <p className="text-xs font-medium">{u.name}</p>
-                          <p className="text-[10px] text-muted-foreground">{u.email}</p>
+                          <p className="text-[12px] text-muted-foreground">{u.email}</p>
                         </div>
                       </div>
                       <Button size="sm" variant={isVerified?"outline":"default"}
-                        className={cn("h-6 text-[10px] px-2", isVerified&&"text-bull border-bull/40")}
+                        className={cn("h-6 text-[12px] px-2", isVerified&&"text-bull border-bull/40")}
                         disabled={isVerified}
                         onClick={()=>setVerified(prev=>new Set([...prev,u.id]))}>
                         {isVerified?`✓ ${lang==="th"?"ยืนยัน":"Verified"}`:lang==="th"?"ยืนยัน":"Verify"}
@@ -258,7 +258,7 @@ export default function DashboardPage() {
                 {SYS.map(s=>(
                   <div key={s.name} className="flex items-center justify-between px-4 py-2.5 border-b border-border/30 last:border-0">
                     <span className="text-xs">{s.name}</span>
-                    <div className={cn("flex items-center gap-1.5 text-[10px] font-semibold", s.ok?"text-bull":"text-bear")}>
+                    <div className={cn("flex items-center gap-1.5 text-[12px] font-semibold", s.ok?"text-bull":"text-bear")}>
                       <span className={cn("size-2 rounded-full", s.ok?"bg-bull animate-pulse":"bg-bear")}/>
                       {s.ok?(lang==="th"?"ปกติ":"Online"):(lang==="th"?"ขัดข้อง":"Issue")}
                     </div>

@@ -42,7 +42,7 @@ export function Navbar() {
         <nav className="hidden xl:flex items-center gap-0.5">
           {navLinks.map(l=>(
             <Button key={l.href} variant="ghost" size="sm" asChild
-              className={cn("h-8 text-xs font-medium",
+              className={cn("h-10 text-sm font-medium",
                 pathname===l.href ? "bg-primary/10 text-primary hover:bg-primary/15 hover:text-primary" : "text-muted-foreground"
               )}>
               <Link href={l.href}>{l.label}</Link>
@@ -50,7 +50,7 @@ export function Navbar() {
           ))}
           {user?.role==="admin" && (
             <Button variant="ghost" size="sm" asChild
-              className={cn("h-8 text-xs font-medium gap-1.5", pathname==="/dashboard"?"bg-primary/10 text-primary":"text-muted-foreground")}>
+              className={cn("h-10 text-sm font-medium gap-1.5", pathname==="/dashboard"?"bg-primary/10 text-primary":"text-muted-foreground")}>
               <Link href="/dashboard"><LayoutDashboard className="size-3.5"/>{tr.dashboard}</Link>
             </Button>
           )}
@@ -66,7 +66,7 @@ export function Navbar() {
           </div>
 
           {/* Language */}
-          <Button variant="outline" size="sm" className="h-7 px-2 text-xs gap-1"
+          <Button variant="outline" size="sm" className="h-9 px-3 text-xs gap-1"
             onClick={()=>setLang(lang==="th"?"en":"th")}>
             <Globe className="size-3"/>
             {lang==="th"?"EN":"TH"}
@@ -108,10 +108,10 @@ export function Navbar() {
             </DropdownMenu>
           ) : (
             <div className="flex gap-1.5">
-              <Button variant="outline" size="sm" className="h-7 text-xs" asChild>
+              <Button variant="outline" size="sm" className="h-9 text-xs" asChild>
                 <Link href="/auth/signin">{tr.signIn}</Link>
               </Button>
-              <Button size="sm" className="h-7 text-xs" asChild>
+              <Button size="sm" className="h-9 text-xs" asChild>
                 <Link href="/auth/signup">{tr.signUp}</Link>
               </Button>
             </div>
