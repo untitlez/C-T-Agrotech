@@ -10,10 +10,9 @@ import { useLang } from "@/contexts/lang-context"
 import { useMarket } from "@/contexts/market-context"
 import { ADMIN_STATS, MOCK_USERS, MOCK_TRANSACTIONS } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
-import TABLE_DATA from "@/table.json"
 import {
   Users, Activity, BarChart3, DollarSign, AlertCircle,
-  TrendingUp, Search, ShieldCheck, ShieldX, FileText, Download, Eye
+  TrendingUp, Search, ShieldCheck, ShieldX, FileText, Download
 } from "lucide-react"
 
 export default function DashboardPage() {
@@ -23,34 +22,17 @@ export default function DashboardPage() {
   const [verified, setVerified] = useState<Set<string>>(new Set())
   const [viewingTx, setViewingTx] = useState<string | null>(null)
 
-  // Transform table.json data into transaction format
-  const transactions = TABLE_DATA.map((tx, index) => {
-    const amount = parseFloat(tx["จำนวน"].replace(/,/g, ''))
-    const isPositive = amount > 0
-    const status = tx["สถานะ"] === "X1" ? "completed" : tx["สถานะ"] === "X2" ? "failed" : "pending"
-    const channel = tx["ช่องทาง"]
-    const date = tx["วัน"]
-    const time = tx["เวลา"]
-
-    // Generate unique constant transaction ID
-    const txId = `TX${String(index + 1).padStart(6, '0')}`
-
-    // Create description based on channel and status
-    const description = lang === "th"
-      ? `${isPositive ? "ฝากเงิน" : "ถอนเงิน"}`
-      : `${isPositive ? "Deposit" : "Withdrawal"}`
+  // Transform MOCK_TRANSACTIONS to match the expected format for display
+  const transactions = MOCK_TRANSACTIONS.map(tx => {
+    // Parse createdAt to separate date and time
+    const parts = tx.createdAt.split(" ")
+    const date = parts[0] || ""
+    const time = parts[1] || ""
 
     return {
-      id: txId,
-      description,
-      amount,
-      method: channel.toLowerCase(),
-      status,
-      type: isPositive ? "deposit" : "withdrawal",
+      ...tx,
       date,
       time,
-      channel,
-      originalStatus: tx["สถานะ"]
     }
   }).reverse() // Show newest first
 
@@ -346,8 +328,8 @@ export default function DashboardPage() {
                     <div class="info-value">${tx.description}</div>
                 </div>
                 <div class="info-row">
-                    <div class="info-label">${currentLang === 'th' ? 'ช่องทาง' : 'Channel'}</div>
-                    <div class="info-value">${tx.channel}</div>
+                    <div class="info-label">${currentLang === 'th' ? 'ช่องทาง' : 'Payment Method'}</div>
+                    <div class="info-value">${tx.method}</div>
                 </div>
             </div>
         </div>
@@ -381,7 +363,7 @@ export default function DashboardPage() {
                 </li>
                 <li>
                     <span>${currentLang === 'th' ? 'รหัสสถานะ:' : 'Status Code:'}</span>
-                    <strong>${tx.originalStatus}</strong>
+                    <strong>${tx.status}</strong>
                 </li>
                 <li>
                     <span>${currentLang === 'th' ? 'วิธีการชำระเงิน:' : 'Payment Method:'}</span>
@@ -495,8 +477,8 @@ export default function DashboardPage() {
   const handleExportAll = () => {
     // Create CSV content
     const headers = lang === "th"
-      ? ["ID", "วันที่", "เวลา", "รายละเอียด", "ช่องทาง", "จำนวน", "สถานะ", "รหัสสถานะ"]
-      : ["ID", "Date", "Time", "Description", "Channel", "Amount", "Status", "Status Code"]
+      ? ["ID", "วันที่", "เวลา", "รายละเอียด", "จำนวน", "สถานะ", "วิธีการ"]
+      : ["ID", "Date", "Time", "Description", "Amount", "Status", "Method"]
 
     const csvContent = [
       headers.join(","),
@@ -505,10 +487,9 @@ export default function DashboardPage() {
         tx.date,
         tx.time,
         tx.description,
-        tx.channel,
         tx.amount,
         tx.status,
-        tx.originalStatus
+        tx.method,
       ].join(","))
     ].join("\n")
 
@@ -644,7 +625,6 @@ export default function DashboardPage() {
                         lang==="th"?"วันที่":"Date",
                         lang==="th"?"เวลา":"Time",
                         lang==="th"?"รายละเอียด":"Description",
-                        lang==="th"?"ช่องทาง":"Channel",
                         lang==="th"?"จำนวน":"Amount",
                         tr.status,
                         ""
@@ -658,12 +638,10 @@ export default function DashboardPage() {
                       <tr key={tx.id} className="border-b border-border/40 hover:bg-muted/30 transition-colors">
                         <td className="px-4 py-2.5 text-[12px] text-muted-foreground">{tx.date}</td>
                         <td className="px-4 py-2.5 text-[11px] text-muted-foreground font-mono">{tx.time}</td>
-                        <td className={cn("px-4 py-2.5 text-xs font-semibold", tx.amount>0?"text-bull":"text-bear")}>
+                        <td className="px-4 py-2.5 text-xs font-semibold">
                           {tx.description}
                         </td>
-                        <td className="px-4 py-2.5 text-xs font-medium text-muted-foreground">
-                          {tx.channel}
-                        </td>
+             
                         <td className={cn("px-4 py-2.5 font-mono text-sm font-bold", tx.amount>0?"text-bull":"text-bear")}>
                           {tx.amount>0?"+":""}฿{Math.abs(tx.amount).toLocaleString()}
                         </td>
