@@ -8,7 +8,7 @@ interface AuthCtx { user: User | null; signIn: (email: string, pw: string) => Pr
 const Ctx = createContext<AuthCtx>({ user: null, signIn: async () => false, signUp: async () => false, signOut: () => {} });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(MOCK_USERS[1]);
+  const [user, setUser] = useState<User | null>(MOCK_USERS[0]);
   const signIn = async (email: string) => { await new Promise(r => setTimeout(r, 800)); setUser(MOCK_USERS.find(u => u.email === email) ?? MOCK_USERS[1]); return true; };
   const signUp = async () => { await new Promise(r => setTimeout(r, 1000)); setUser(MOCK_USERS[2]); return true; };
   const signOut = () => setUser(null);

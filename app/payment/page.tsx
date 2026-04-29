@@ -27,6 +27,7 @@ export default function PaymentPage() {
   const { lang, tr } = useLang();
   const [amount, setAmount] = useState("");
   const [method, setMethod] = useState<"bank" | "card" | "pp">("bank");
+  const [selectedBank, setSelectedBank] = useState<string>("kbank");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [txList, setTxList] = useState(MOCK_TRANSACTIONS);
@@ -37,15 +38,24 @@ export default function PaymentPage() {
     await new Promise((r) => setTimeout(r, 1200));
     setLoading(false);
     setSuccess(true);
+    const selectedBankInfo =
+      method === "bank"
+        ? thaiBanks.find((b) => b.id === selectedBank)
+        : null;
+
     setTxList((prev) => [
       {
         id: `TX${Date.now()}`,
         type: "deposit",
         amount: parseFloat(amount),
         status: "completed",
-        method: "bank_transfer",
+        method: method === "bank" ? "bank_transfer" : method === "card" ? "credit_card" : "promptpay",
         createdAt: new Date().toLocaleString("th-TH"),
-        description: lang === "th" ? "ฝากเงิน" : "Deposit",
+        description: selectedBankInfo
+          ? `${lang === "th" ? "โอนเงิน" : "Transfer"} - ${lang === "th" ? selectedBankInfo.nameTh : selectedBankInfo.name}`
+          : lang === "th"
+            ? "ฝากเงิน"
+            : "Deposit",
       },
       ...prev,
     ]);
@@ -76,6 +86,57 @@ export default function PaymentPage() {
       id: "pp" as const,
       label: tr.promptpay,
       icon: <Smartphone className="size-4" />,
+    },
+  ];
+
+  const thaiBanks = [
+    {
+      id: "kbank",
+      name: "Kasikorn Bank",
+      nameTh: "ธนาคารกสิกรไทย",
+      accountNo: "123-4-56789-0",
+      color: "#138F2D",
+      logo: "K",
+    },
+    {
+      id: "scb",
+      name: "Siam Commercial Bank",
+      nameTh: "ธนาคารไทยพาณิชย์",
+      accountNo: "987-6-54321-0",
+      color: "#4B2A85",
+      logo: "SCB",
+    },
+    {
+      id: "bbl",
+      name: "Bangkok Bank",
+      nameTh: "ธนาคารกรุงเทพ",
+      accountNo: "456-7-89012-3",
+      color: "#1C4E9D",
+      logo: "BBL",
+    },
+    {
+      id: "ktb",
+      name: "Krungthai Bank",
+      nameTh: "ธนาคารกรุงไทย",
+      accountNo: "789-0-12345-6",
+      color: "#E31B23",
+      logo: "KTB",
+    },
+    {
+      id: "bay",
+      name: "Bank of Ayudhya",
+      nameTh: "ธนาคารกรุงศรีอยุธยา",
+      accountNo: "234-5-67890-1",
+      color: "#F47B20",
+      logo: "BAY",
+    },
+    {
+      id: "ttb",
+      name: "TMBThanachart Bank",
+      nameTh: "ธนาคารทหารไทยธนชาต",
+      accountNo: "567-8-90123-4",
+      color: "#F89C1C",
+      logo: "ttb",
     },
   ];
 
@@ -182,6 +243,46 @@ export default function PaymentPage() {
                       ))}
                     </div>
                   </div>
+
+                  {method === "bank" && (
+                    <div className="flex flex-col gap-1.5">
+                      <Label className="text-[12px] uppercase tracking-wider">
+                        {lang === "th" ? "เลือกธนาคาร" : "Select Bank"}
+                      </Label>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {thaiBanks.map((bank) => (
+                          <button
+                            key={bank.id}
+                            onClick={() => setSelectedBank(bank.id)}
+                            className={cn(
+                              "flex items-center gap-2 p-2.5 rounded-lg border text-left transition-all",
+                              selectedBank === bank.id
+                                ? "border-primary bg-primary/5"
+                                : "border-border hover:border-border/80",
+                            )}
+                          >
+                            <div
+                              className="size-8 rounded-md flex items-center justify-center text-white text-[10px] font-bold shrink-0"
+                              style={{ backgroundColor: bank.color }}
+                            >
+                              {bank.logo}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-xs font-semibold truncate">
+                                {lang === "th" ? bank.nameTh : bank.name}
+                              </p>
+                              <p className="text-[11px] text-muted-foreground font-mono truncate">
+                                {bank.accountNo}
+                              </p>
+                            </div>
+                            {selectedBank === bank.id && (
+                              <CheckCircle2 className="size-3.5 text-primary shrink-0" />
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {method === "pp" && (
                     <div className="flex flex-col items-center p-4 bg-muted/40 rounded-xl">
